@@ -94,18 +94,9 @@ class Lead:
                     return None
                 is_reverse = right > left
                 if is_reverse:
-                    if is_first:
-                        mate_ref_start = pos + refspan
-                    else:
-                        mate_ref_start = pos + refspan
+                    mate_ref_start = pos + refspan # 1-based last base of the mate part
                 else:
-                    if is_first:
-                        mate_ref_start = pos + 1
-                    else:
-                        if strand == read_strand:
-                            mate_ref_start = pos + refspan
-                        else:
-                            mate_ref_start = pos + 2
+                    mate_ref_start = pos + 1 # 1-based first base of the mate part
 
                 return cls(
                     read_id=read_id,
